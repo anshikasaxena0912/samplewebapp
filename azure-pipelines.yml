@@ -43,7 +43,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      cd (Build.ArtifactStagingDirectory)
+      cd $(Build.ArtifactStagingDirectory)
       ls -lrt
 - task: NuGetCommand@2
   displayName: Pushing to Nuget
