@@ -45,6 +45,13 @@ steps:
 
 - task: NuGetCommand@2
   inputs:
+    command: 'restore'
+    restoreSolution: '**/*.sln'
+    feedsToUse: 'select'
+    vstsFeed: 'e6904af1-d7a5-4405-b4ce-71587ca4eff0'
+
+- task: NuGetCommand@2
+  inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
     nuGetFeedType: 'external'
