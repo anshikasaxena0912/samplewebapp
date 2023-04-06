@@ -38,8 +38,15 @@ steps:
     command: 'pack'
     packagesToPack: '**/*.csproj'
     versioningScheme: 'off'
-
+- task: Bash@3
+  displayName: Running linux command
+  inputs:
+    targetType: 'inline'
+    script: |
+      cd (Build.ArtifactStagingDirectory)
+      ls -lrt
 - task: NuGetCommand@2
+  displayName: Pushing to Nuget
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
