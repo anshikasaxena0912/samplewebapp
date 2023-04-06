@@ -45,6 +45,9 @@ steps:
     script: |
       cd $(Build.ArtifactStagingDirectory)
       ls -lrt
+- task: NuGetAuthenticate@1
+  inputs:
+    nuGetServiceConnections: 'nuget'
 - task: NuGetCommand@2
   displayName: Pushing to Nuget
   inputs:
