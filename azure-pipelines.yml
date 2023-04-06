@@ -38,17 +38,7 @@ steps:
     command: 'pack'
     packagesToPack: '**/*.csproj'
     versioningScheme: 'off'
-- task: Bash@3
-  displayName: Running linux command
-  inputs:
-    targetType: 'inline'
-    script: |
-      cd $(Build.ArtifactStagingDirectory)
-      ls -lrt
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: 'nuget.exe push -Source "HappyIT-NL" -ApiKey 1234'
+
 - task: NuGetAuthenticate@1
   inputs:
     nuGetServiceConnections: 'NugetService'
