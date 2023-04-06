@@ -51,11 +51,10 @@ steps:
     script: 'nuget.exe push -Source "HappyIT-NL" -ApiKey 1234'
 - task: NuGetAuthenticate@1
   inputs:
-    nuGetServiceConnections: 'nuget'
-#- task: NuGetCommand@2
-#  displayName: Pushing to Nuget
-#  inputs:
-#    command: 'push -APIKey "1234"'
-#    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-#    nuGetFeedType: 'internal'
-#    publishVstsFeed: 'e6904af1-d7a5-4405-b4ce-71587ca4eff0'  
+    nuGetServiceConnections: 'NugetService'
+
+- task: NuGetCommand@2
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'internal'
