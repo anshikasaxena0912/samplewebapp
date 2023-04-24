@@ -1,10 +1,10 @@
-FROM mcr.microsoft.com/dotnet/aspnet:3.0-buster-slim AS build
+FROM mcr.microsoft.com/dotnet/sdk:3.0 AS build
 WORKDIR /source
 COPY . .
 RUN dotnet restore "./SampleWebApp/SampleWebApp.csproj" 
 RUN dotnet publish "./SampleWebApp/SampleWebApp.csproj" -o /app --no-restore
 
-FROM mcr.microsoft.com/dotnet/aspnet:3.0-buster-slim
+FROM mcr.microsoft.com/dotnet/sdk:3.0
 WORKDIR /app
 COPY --from=build /app ./
 EXPOSE 5000
