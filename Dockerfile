@@ -11,7 +11,7 @@ RUN dotnet publish -c release -o /WebApp --no-restore
 
 # Final stage / image
 FROM mcr.microsoft.com/dotnet/aspnet:5.0
-EXPOSE 5000
+EXPOSE 5009
 WORKDIR /WebApp
 COPY --from=build /WebApp ./
 ENTRYPOINT ["dotnet", "SampleWebApp.dll"]
