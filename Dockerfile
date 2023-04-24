@@ -2,8 +2,8 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /source
 COPY . .
 RUN ls
-RUN dotnet restore "./samplewebapp/app/SampleWebApp/SampleWebApp.csproj" 
-RUN dotnet publish "./samplewebapp/app/SampleWebApp/SampleWebApp.csproj" -o /app --no-restore
+RUN dotnet restore "src/*.csproj" 
+RUN dotnet publish "src/*.csproj" 
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0
 WORKDIR /app
